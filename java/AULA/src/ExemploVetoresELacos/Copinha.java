@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Copinha {
 
+
 	public static void main(String[] args) {
 		
 		Scanner leia = new Scanner(System.in);

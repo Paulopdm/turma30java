@@ -1,9 +1,8 @@
 package programas;
 
-import java.util.*;
+import java.util.Scanner;
 
-public class CadAluno {
-
+public class cadAluno {
 	public static void main(String[] args) {
 
 		Scanner ler = new Scanner(System.in);
@@ -67,7 +66,7 @@ public class CadAluno {
 					} else {
 						System.out.printf("/nOpção inválida!");
 					}
-					
+
 				}
 			}
 			System.out.println("\nVocê deseja continuar?");
@@ -76,14 +75,14 @@ public class CadAluno {
 
 		for (int x = 0; x < alunes.length; x++) {
 			if (nota[x] > 0 && ativo[x] == true) {
-				System.out.print("\nMatricula: " + matriculas[x] + " Alunes: " + alunes[x] + " Notas: " + nota[x] + " Status: Ativo.");
+				System.out.print("\nMatricula: " + matriculas[x] + " Alunes: " + alunes[x] + " Notas: " + nota[x]
+						+ " Status: Ativo.");
 				if (nota[x] > 5) {
 					System.out.printf("\nObs: Parabéns! Continue assim!");
-				}
-				else {
+				} else {
 					System.out.println("\nObs: Precisa estudar mais, em?!");
 				}
-				
+
 			}
 
 		}

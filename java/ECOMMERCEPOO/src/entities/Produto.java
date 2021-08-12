@@ -1,29 +1,31 @@
 package entities;
 
 public class Produto {
-	private String codigo;
-	private int estoque;
 	private String nome;
+	private String codigo;
 	private double valor;
-
-	public Produto(String codigo, int estoque, String nome, double valor) {
+	private int estoque;
+	
+	public Produto() {
 		super();
-		this.codigo = codigo;
-		this.estoque = estoque;
+	}
+
+	public Produto(String nome, String codigo) {
+		super();
 		this.nome = nome;
-		this.valor = valor;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 
-	public int getEstoque() {
-		return estoque;
+	public Produto(String nome, String codigo, double valor, int estoque) {
+		super();
+		this.nome = nome;
+		this.codigo = codigo;
+		this.valor = valor;
+		if (estoque < 0) {
+			this.estoque = 0;
+		} else {
+			this.estoque = estoque;
+		}
 	}
 
 	public String getNome() {
@@ -34,6 +36,14 @@ public class Produto {
 		this.nome = nome;
 	}
 
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
 	public double getValor() {
 		return valor;
 	}
@@ -42,21 +52,26 @@ public class Produto {
 		this.valor = valor;
 	}
 
-	public void entradaEstoque(int quantidade) {
-		if(quantidade >= 0){
-				this.estoque += quantidade;
-		}
-		else {
-			System.out.println("Impossível adicionar a quantidade informada");
-		}
+	public int getEstoque() {
+		return estoque;
 	}
 
-	public void saidaEstoque(int quantidade) {
-		if (quantidade <= this.estoque) {
-			this.estoque -= quantidade;
+	public void retiraEstoque(int decremento) {
+		/*
+		if (decremento > this.estoque) {
+			System.out.println("QUANTIDADE INDISPONÍVEL");
+		} else {
+			this.estoque = this.estoque - decremento;
 		}
-		else {
-			System.out.println("Quantidade inválida");
+		*/
+		this.estoque = this.estoque - decremento;
+	}
+
+	public void incluiEstoque(int incremento) {
+		if (incremento <= 0) {
+			System.out.println("QUANTIDADE INVÁLIDA");
+		} else {
+			this.estoque = this.estoque + incremento;
 		}
 	}
 }

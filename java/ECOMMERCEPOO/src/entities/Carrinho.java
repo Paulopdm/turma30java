@@ -1,18 +1,27 @@
 package entities;
 
-public class Carrinho 
-{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Carrinho {
+	List<Carrinho> carrinho = new ArrayList<>();
+	int contador = 0;
+
 	private String nome;
-	private int quantidadeComprada;
 	private String codigo;
 	private double valor;
-	
-	public Carrinho(String nome, int quantidadeComprada, String codigo, double valor) {
+	private int quantidade;
+
+	public Carrinho() {
+		super();
+	}
+
+	public Carrinho(String nome, String codigo, double valor, int quantidade) {
 		super();
 		this.nome = nome;
-		this.quantidadeComprada = quantidadeComprada;
 		this.codigo = codigo;
 		this.valor = valor;
+		this.quantidade = quantidade;
 	}
 
 	public String getNome() {
@@ -21,14 +30,6 @@ public class Carrinho
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public int getQuantidadeComprada() {
-		return quantidadeComprada;
-	}
-
-	public void setQuantidadeComprada(int quantidadeComprada) {
-		this.quantidadeComprada = quantidadeComprada;
 	}
 
 	public String getCodigo() {
@@ -46,12 +47,38 @@ public class Carrinho
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	
-	
-	public double valorFinalProduto() {
-		return this.quantidadeComprada * this.valor;
+
+	public int getQuantidade() {
+		return quantidade;
 	}
-	
-	//calcular valor final de todos os produtos do carrinho;
-	
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public void entraCarrinho(String nome, String codigo, double valor, int quantidade) {
+		if (quantidade == 0) {
+			System.out.println("QUANTIDADE NAO PODE SER 0!");
+		} else {
+			carrinho.add(new Carrinho(nome, codigo, valor, quantidade));
+
+		}
+	}
+
+	public void mostraCarrinho() {
+		System.out.println();
+		System.out.println(" *** CARRINHO ***");
+		System.out.println();
+		if (carrinho.isEmpty()) {
+			System.out.println("O CARRINHO ESTA VAZIO");
+		} else {
+			for (Carrinho x : carrinho) {
+				System.out.printf("%d x %s - %.2f\n", x.getQuantidade(), x.getNome(), x.getValor()); 
+			}
+		}
+	}
+
+	public void limparCarrinho() {
+		carrinho.clear();
+	}
 }
